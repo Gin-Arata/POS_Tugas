@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Ini merupakan halaman transaksi</h1>
+    <a href="/"><- Back to Home</a>
 </body>
 </html>
