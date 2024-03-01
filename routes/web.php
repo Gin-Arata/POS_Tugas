@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PenjualanController;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\PenjualanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,21 +18,29 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Routing Index Page / Home Page
-Route::get('/', [HomeController::class, 'index']);
+// // Routing Index Page / Home Page
+// Route::get('/', [HomeController::class, 'index']);
 
-// Routing Product Page
-Route::prefix('category')->group(function (){
-    Route::get('/', [ProductsController::class, 'index']);
-    Route::get('/food-beverage', [ProductsController::class, 'foodBeverage']);
-    Route::get('/beauty-health', [ProductsController::class, 'beautyHealth']);
-    Route::get('/home-care', [ProductsController::class, 'homeCare']);
-    Route::get('/baby-kid', [ProductsController::class, 'babyKid']);
+// // Routing Product Page
+// Route::prefix('category')->group(function (){
+//     Route::get('/', [ProductsController::class, 'index']);
+//     Route::get('/food-beverage', [ProductsController::class, 'foodBeverage']);
+//     Route::get('/beauty-health', [ProductsController::class, 'beautyHealth']);
+//     Route::get('/home-care', [ProductsController::class, 'homeCare']);
+//     Route::get('/baby-kid', [ProductsController::class, 'babyKid']);
+// });
+
+// // Routing User Page
+// Route::get('/user/{id}/name/{name}', [UserController::class, 'index']);
+
+// // Routing Halaman Transaksi
+// Route::get('/transaksi', [PenjualanController::class, 'index']);
+
+
+// Routing Index Page / Home Page
+Route::get('/', function() {
+    return view('home.index');
 });
 
-// Routing User Page
-Route::get('/user/{id}/name/{name}', [UserController::class, 'index']);
-
-// Routing Halaman Transaksi
-Route::get('/transaksi', [PenjualanController::class, 'index']);
-
+// Routing Level Page
+Route::get('/level', [LevelController::class, 'index']);
