@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('m_level', function (Blueprint $table) {
-            $table->unsignedBigInteger('level_id')->index();
-            $table->string('level_kode', 10)->unique();
-            $table->string('level_nama', 100);
+        Schema::create('m_kategori', function (Blueprint $table) {
+            $table->unsignedBigInteger('kategori_id')->index();
+            $table->string('kategori_kode', 10)->unique();
+            $table->string('kategori_nama', 100);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('m_level');
+        Schema::dropIfExists('m_kategori');
     }
 };
