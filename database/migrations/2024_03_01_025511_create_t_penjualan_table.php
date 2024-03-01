@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('t_penjualan', function (Blueprint $table) {
             $table->unsignedBigInteger('penjualan_id')->index();
             $table->unsignedBigInteger('user_id')->index();
-            $table->string('pembeli'. 50);
+            $table->string('pembeli', 50);
             $table->string('penjualan_kode', 20);
             $table->date('penjualan_tanggal');
             $table->timestamps();
