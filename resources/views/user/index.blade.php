@@ -9,9 +9,21 @@
 </head>
 
 <body>
-    <h1>Ini merupakan halaman user untuk id {{ $data->$user_id }}</h1>
-    <h3>Halo, {{ $data->nama }}</h3>
-    <a href="/"><- Back to Home</a>
+    <h1>Data User</h1>
+    <table border="1" cellpadding="2"cellspacing="0">
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>Nama</td>
+            <td>ID Level Pengguna</td>
+        </tr>
+        <tr>
+            <td>{{ $data->user_id }}</td>
+            <td>{{ $data->username }}</td>
+            <td>{{ $data->nama }}</td>
+            <td>{{ $data->level_id }}</td>
+        </tr>
+    </table>
 </body>
 
 </html>
