@@ -34,6 +34,21 @@ Route::prefix('category')->group(function (){
 // Routing User Page
 Route::get('/user', [UserController::class, 'index']);
 
+// Routing User Tambah
+Route::get('/user/tambah', [UserController::class, 'tambah']);
+
+// Routing Tambah Simpan
+Route::post('/user/tambah_simpan', [UserController::class, 'tambahSimpan']);
+
+// Routing User Ubah
+Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
+
+// Routing Ubah Simpan
+Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubahSimpan']);
+
+// Routing Hapus User
+Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+
 // Routing Halaman Transaksi
 Route::get('/transaksi', [PenjualanController::class, 'index']);
 
@@ -42,3 +57,4 @@ Route::get('/level', [LevelController::class, 'index']);
 
 // Routing Halaman Kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
+
