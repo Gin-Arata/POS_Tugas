@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index() {
+        $user = UserModel::with('level')->get();
         // return view('user.index', [
         //     "id" => $userId,
         //     "name" => $nameUser
@@ -95,7 +96,7 @@ class UserController extends Controller
         // $user->wasChanged('nama');
         // dd($user->wasChanged(['nama', 'username']));
 
-        $user = UserModel::all();
+        // $user = UserModel::all();
         return view('user.index', ['datas' => $user]);
     }
 
