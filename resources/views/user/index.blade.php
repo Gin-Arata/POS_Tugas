@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <h1>Ini merupakan halaman user untuk id {{ $id }}</h1>
-    <h3>Halo, {{ $name }}</h3>
+    <h1>Ini merupakan halaman user untuk id {{ $data->$user_id }}</h1>
+    <h3>Halo, {{ $data->nama }}</h3>
     <a href="/"><- Back to Home</a>
 </body>
 

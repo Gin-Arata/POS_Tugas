@@ -32,7 +32,7 @@ Route::prefix('category')->group(function (){
 });
 
 // Routing User Page
-Route::get('/user/{id}/name/{name}', [UserController::class, 'index']);
+Route::get('/user', [UserController::class, 'index']);
 
 // Routing Halaman Transaksi
 Route::get('/transaksi', [PenjualanController::class, 'index']);
