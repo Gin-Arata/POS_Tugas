@@ -14,25 +14,25 @@
 <body>
     <h1>Form Tambah Data User</h1>
     <form action="/user/tambah_simpan" method="post">
-        {{ csrf_field() }}  
+        {{ csrf_field() }}
 
         <label for="username">Username</label>
-        <input type="text" name="username" placeholder="Masukkan Username">
-        <br>
+            <input type="text" name="username" placeholder="Masukkan Username">
+            <br>
 
-        <label for="nama">Nama</label>
-        <input type="text" name="nama" placeholder="Masukkan Nama">
-        <br>
+            <label for="nama">Nama</label>
+            <input type="text" name="nama" placeholder="Masukkan Nama">
+            <br>
 
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="Masukkan Password">
-        <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="Masukkan Password">
+            <br>
 
-        <label for="levelID">Level ID</label>
-        <input type="number" name="levelID" placeholder="Masukkan Level ID">
-        <br><br>
+            <label for="levelID">Level ID</label>
+            <input type="number" name="levelID" placeholder="Masukkan Level ID">
+            <br><br>
 
-        <input type="submit" class="btn btn-success" value="Simpan">
+            <input type="submit" class="btn btn-success" value="Simpan">
     </form>
 </body>
 

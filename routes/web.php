@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PenjualanController;
 
@@ -58,3 +59,8 @@ Route::get('/level', [LevelController::class, 'index']);
 // Routing Halaman Kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
 
+
+// Bootstrap default
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
