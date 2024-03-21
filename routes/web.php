@@ -59,8 +59,19 @@ Route::get('/level', [LevelController::class, 'index']);
 // Routing Halaman Kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
 
+// Routing Halaman Kategori Create dan Store
+Route::get('/kategori/create', [KategoriController::class, 'create']);
+Route::post('/kategori', [KategoriController::class, 'store']);
 
-// Bootstrap default
-Auth::routes();
+// Routing Halaman Kategori Edit dan Update
+Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit']);
+Route::post('/kategori/update/{id}', [KategoriController::class, 'edit_simpan']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Routing Halaman Delete
+Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete']);
+
+
+// // Bootstrap default
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
