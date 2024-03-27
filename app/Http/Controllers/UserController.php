@@ -139,4 +139,8 @@ class UserController extends Controller
 
         return redirect('/user');
     }
+
+    public function form() {
+        return view('form.user');
+    }
 }

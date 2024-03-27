@@ -8,6 +8,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\POSController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,26 +36,32 @@ Route::prefix('category')->group(function (){
 // Routing User Page
 Route::get('/user', [UserController::class, 'index']);
 
-// Routing User Tambah
-Route::get('/user/tambah', [UserController::class, 'tambah']);
+// // Routing form user
+// Route::get('/user/form', [UserController::class, 'form']);
 
-// Routing Tambah Simpan
-Route::post('/user/tambah_simpan', [UserController::class, 'tambahSimpan']);
+// // Routing User Tambah
+// Route::get('/user/tambah', [UserController::class, 'tambah']);
 
-// Routing User Ubah
-Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
+// // Routing Tambah Simpan
+// Route::post('/user/tambah_simpan', [UserController::class, 'tambahSimpan']);
 
-// Routing Ubah Simpan
-Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubahSimpan']);
+// // Routing User Ubah
+// Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
 
-// Routing Hapus User
-Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+// // Routing Ubah Simpan
+// Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubahSimpan']);
+
+// // Routing Hapus User
+// Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 
 // Routing Halaman Transaksi
 Route::get('/transaksi', [PenjualanController::class, 'index']);
 
 // Routing Level Page
 Route::get('/level', [LevelController::class, 'index']);
+
+// Routing Form Level
+Route::get('/level/form', [LevelController::class, 'form']);
 
 // Routing Halaman Kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
@@ -70,8 +77,23 @@ Route::post('/kategori/update/{id}', [KategoriController::class, 'edit_simpan'])
 // Routing Halaman Delete
 Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete']);
 
+// Routing Resource User
+Route::resource('user', POSController::class);
 
-// // Bootstrap default
-// Auth::routes();
+// Routing m_user index
+Route::get('/m_user', [POSController::class, 'index']);
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Routing m_user tampil user
+Route::get('/m_user/tampil/{id}', [POSController::class, 'show']);
+
+// Routing m_user tambah user
+Route::get('/m_user/tambah', [POSController::class, 'create']);
+Route::post('/m_user', [POSController::class, 'store']);
+
+// Routing m_user edit user
+Route::get('/m_user/ubah/{id}', [POSController::class, 'edit']);
+Route::post('/m_user/ubah_simpan/{id}', [POSController::class, 'update']);
+
+// Routing m_user hapus user
+Route::get('/m_user/hapus/{id}', [POSController::class, 'destroy']);
+
