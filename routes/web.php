@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\POSController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StokController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PenjualanController;
-use App\Http\Controllers\POSController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +94,51 @@ Route::group(['prefix' => 'kategori'], function() {
 
     // Route menghapus data kategori berdasarkan id
     Route::delete('/{id}', [KategoriController::class, 'destroy']);
+});
+
+// Routing Group CRUD barang
+Route::group(['prefix' => 'barang'], function() {
+    // Route menampilkan halaman awal barang
+    Route::get('/', [BarangController::class, 'index']);
+    // Route menampilkan list barang
+    Route::post('/list', [BarangController::class, 'list']);
+
+    // Route menampilkan halaman form tambah barang
+    Route::get('/create', [BarangController::class, 'create']);
+    // Route menyimpan data barang baru
+    Route::post('/', [BarangController::class,'store']);
+
+    //Route menampilkan detail barang berdasarkan id
+    Route::get('/{id}', [BarangController::class, 'show']);
+
+    // Route menampilkan halaman edit form barang
+    Route::get('/{id}/edit', [BarangController::class, 'edit']);
+    // Route menyimpan data barang yang telah diubah
+    Route::put('/{id}', [BarangController::class, 'update']);
+
+    // Route menghapus data barang berdasarkan id
+    Route::delete('/{id}', [BarangController::class, 'destroy']);
+});
+
+// Routing Group CRUD Stok
+Route::group(['prefix' => 'stok'], function() {
+    // Route menampilkan halaman awal Stok
+    Route::get('/', [StokController::class, 'index']);
+    // Route menampilkan list Stok
+    Route::post('/list', [StokController::class, 'list']);
+
+    // Route menampilkan halaman form tambah Stok
+    Route::get('/create', [StokController::class, 'create']);
+    // Route menyimpan data Stok baru
+    Route::post('/', [StokController::class,'store']);
+
+    // Route menampilkan halaman edit form Stok
+    Route::get('/{id}/edit', [StokController::class, 'edit']);
+    // Route menyimpan data Stok yang telah diubah
+    Route::put('/{id}', [StokController::class, 'update']);
+
+    // Route menghapus data Stok berdasarkan id
+    Route::delete('/{id}', [StokController::class, 'destroy']);
 });
 
 // // Routing Product Page
