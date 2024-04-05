@@ -22,8 +22,8 @@ class StoreLevelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'level_kode' => 'required',
-            'level_nama' => 'bail|required|max:50'
+            'level_kode' => 'required|min:1|unique:m_level,level_kode',
+            'level_nama' => 'bail|required|min:3|unique:m_level,level_nama'
         ];
     }
 }

@@ -52,6 +52,48 @@ Route::group(['prefix' => 'user'], function() {
     Route::delete('/{id}', [UserController::class, 'destroy']);
 });
 
+// Routing Group CRUD Level
+Route::group(['prefix' => 'level'], function() {
+    // Route menampilkan halaman awal level
+    Route::get('/', [LevelController::class, 'index']);
+    // Route menampilkan list level
+    Route::post('/list', [LevelController::class, 'list']);
+
+    // Route menampilkan halaman form tambah level
+    Route::get('/create', [LevelController::class, 'create']);
+    // Route menyimpan data level baru
+    Route::post('/', [LevelController::class,'store']);
+
+    // Route menampilkan halaman edit form level
+    Route::get('/{id}/edit', [LevelController::class, 'edit']);
+    // Route menyimpan data level yang telah diubah
+    Route::put('/{id}', [LevelController::class, 'update']);
+
+    // Route menghapus data level berdasarkan id
+    Route::delete('/{id}', [LevelController::class, 'destroy']);
+});
+
+// Routing Group CRUD Kategori
+Route::group(['prefix' => 'kategori'], function() {
+    // Route menampilkan halaman awal Kategori
+    Route::get('/', [KategoriController::class, 'index']);
+    // Route menampilkan list Kategori
+    Route::post('/list', [KategoriController::class, 'list']);
+
+    // Route menampilkan halaman form tambah kategori
+    Route::get('/create', [KategoriController::class, 'create']);
+    // Route menyimpan data kategori baru
+    Route::post('/', [KategoriController::class,'store']);
+
+    // Route menampilkan halaman edit form kategori
+    Route::get('/{id}/edit', [KategoriController::class, 'edit']);
+    // Route menyimpan data kategori yang telah diubah
+    Route::put('/{id}', [KategoriController::class, 'update']);
+
+    // Route menghapus data kategori berdasarkan id
+    Route::delete('/{id}', [KategoriController::class, 'destroy']);
+});
+
 // // Routing Product Page
 // Route::prefix('category')->group(function (){
 //     Route::get('/', [ProductsController::class, 'index']);
