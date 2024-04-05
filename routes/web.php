@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\POSController;
@@ -139,6 +140,19 @@ Route::group(['prefix' => 'stok'], function() {
 
     // Route menghapus data Stok berdasarkan id
     Route::delete('/{id}', [StokController::class, 'destroy']);
+});
+
+// Routing Group Transaksi
+Route::group(['prefix' => 'transaksi'], function() {
+    // Route menampilkan halaman awal transaksi
+    Route::get('/', [TransaksiController::class, 'index']);
+    // Route menampilkan list transaksi
+    Route::post('/list', [TransaksiController::class, 'list']);
+
+    // Route menampilkan transaksi detail
+    Route::get('/{id}/detail', [TransaksiController::class, 'detail']);
+    // Route menampilkan transaksi detail list
+    Route::get('/{id}/list', [TransaksiController::class, 'detailList']);
 });
 
 // // Routing Product Page

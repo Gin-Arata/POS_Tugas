@@ -29,4 +29,8 @@ class UserModel extends Model
     public function stok(): HasMany {
         return $this->hasMany(StokModel::class, 'user_id', 'user_id');
     }
+
+    public function transaksi(): HasMany {
+        return $this->hasMany(TransaksiModel::class, 'user_id', 'user_id');
+    }
 }

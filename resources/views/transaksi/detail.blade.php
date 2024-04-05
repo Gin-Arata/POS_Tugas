@@ -1,39 +1,46 @@
 @extends('layouts.template')
-
 @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
+            <div class="card-tools"></div>
         </div>
+
         <div class="card-body">
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_transaksi">
+            @empty($detail)
+                <div class="alert alert-danger alert-dismissible">
+                    <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5>
+                    <p>Data yang Anda cari tidak ditemukan.</p>
+                </div>
+            @else
+            <table class="table table-bordered table-striped table-hover table-sm" id="table_detail">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Kode Penjualan</th>
-                        <th>User yang Melayani</th>
-                        <th>Pembeli</th>
-                        <th>Tanggal Penjualan</th>
-                        <th>Aksi</th>
+                        <th>ID Transaksi</th>
+                        <th>Nama Barang</th>
+                        <th>Total Harga</th>
+                        <th>Jumlah</th>
                     </tr>
                 </thead>
             </table>
+            @endempty
+            <a href="{{ url('transaksi') }}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection
 
 @push('css')
 @endpush
-
 @push('js')
     <script>
         $(document).ready(function() {
-            var dataUser = $('#table_transaksi').DataTable({
+            var dataUser = $('#table_detail').DataTable({
                 serverSide: true,
                 ajax: {
-                    "url": "{{ url('/transaksi/list') }}",
+                    "url": "{{ url('/transaksi/'. $detail .'/list') }}",
                     "dataType": "json",
-                    "type": "POST"
+                    "type": "GET"
                 },
                 columns: [{
                     data: "DT_RowIndex",
@@ -41,30 +48,25 @@
                     orderable: false,
                     searchable: false
                 }, {
-                    data: "penjualan_kode",
+                    data: "transaksi.penjualan_id",
                     className: "",
                     orderable: false,
                     searchable: true
                 }, {
-                    data: "user.nama",
+                    data: "barang.barang_nama",
                     className: "",
                     orderable: false,
                     searchable: true
                 }, {
-                    data: "pembeli",
+                    data: "harga",
                     className: "",
                     orderable: false,
                     searchable: true
                 }, {
-                    data: "penjualan_tanggal",
+                    data: "jumlah",
                     className: "",
                     orderable: false,
                     searchable: true
-                }, {
-                    data: "aksi",
-                    className: "",
-                    orderable: false,
-                    searchable: false
                 }]
             });
         });
