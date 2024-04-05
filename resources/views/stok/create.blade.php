@@ -13,24 +13,48 @@
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Nama Barang</label>
                     <div class="col-11">
-                        <select class="form-control" name="barang_nama" id="barang_nama">
+                        <select class="form-control" name="barang_id" id="barang_id">
                             <option value="">- Pilih Barang -</option>
                             @foreach ($barang as $item)
                                 <option value="{{ $item->barang_id }}">{{ $item->barang_nama }}</option>
                             @endforeach
                         </select>
-                        @error('barang_nama')
+                        @error('barang_id')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-1 control-label col-form-label">Nama Kategori</label>
+                    <label class="col-1 control-label col-form-label">User Input Stok</label>
                     <div class="col-11">
-                        <input type="text" class="form-control" id="kategori_nama" name="kategori_nama"
-                            value="{{ old('kategori_nama') }}" required>
-                        @error('kategori_nama')
+                        <select class="form-control" name="user_id" id="user_id">
+                            <option value="">- Pilih User -</option>
+                            @foreach ($users as $user)
+                                <option value="{{ $user->user_id }}">{{ $user->nama }}</option>
+                            @endforeach
+                        </select>
+                        @error('user_id')
+                            <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-1 control-label col-form-label">Tanggal Stok</label>
+                    <div class="col-11">
+                        <input type="date" class="form-control" name="stok_tanggal" id="stok_tanggal" value="{{ old('stok_tanggal') }}">
+                        @error('stok_tanggal')
+                            <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-1 control-label col-form-label">Jumlah Stok</label>
+                    <div class="col-11">
+                        <input type="number" class="form-control" name="stok_jumlah" id="stok_jumlah" value="{{ old('stok_jumlah') }}">
+                        @error('stok_jumlah')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>

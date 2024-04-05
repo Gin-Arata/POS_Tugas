@@ -11,7 +11,7 @@ class StoreStokRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreStokRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'barang_id' => ['required', 'integer'],
+            'user_id' => ['required', 'integer'],
+            'stok_tanggal' => ['required', 'date'],
+            'stok_jumlah' => ['required', 'integer']
         ];
     }
 }
