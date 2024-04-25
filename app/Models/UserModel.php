@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\Models\LevelModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Autheenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class UserModel extends Model
+class UserModel extends Autheenticatable
 {
     use HasFactory;
 
