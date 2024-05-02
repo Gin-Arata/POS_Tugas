@@ -4,12 +4,13 @@ namespace App\Models;
 
 use App\Models\LevelModel;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Autheenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class UserModel extends Autheenticatable
+class UserModel extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
