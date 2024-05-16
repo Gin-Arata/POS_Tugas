@@ -16,13 +16,14 @@
             @csrf
 
             <div class="mb-3">
+                <label for="namaFile" class="label-control mb-2">Masukkan Nama File Anda:</label>
+                <input type="text" id="namaFile" name="namaFile" class="form-control">
                 <label for="berkas" class="form-label"></label>
                 <input type="file" id="berkas" name="berkas" class="form-control">
                 @error('berkas')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-
             <button class="btn btn-primary my-2" type="submit">Upload</button>
         </form>
     </div>

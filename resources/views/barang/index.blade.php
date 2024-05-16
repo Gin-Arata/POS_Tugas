@@ -40,6 +40,7 @@
                         <th>Harga Beli</th>
                         <th>Harga Jual</th>
                         <th>Kategori Barang</th>
+                        <th>Gambar Barang</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -65,41 +66,52 @@
                     }
                 },
                 columns: [{
-                    data: "DT_RowIndex",
-                    className: "text-center",
-                    orderable: false,
-                    searchable: false
-                }, {
-                    data: "barang_kode",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                }, {
-                    data: "barang_nama",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                }, {
-                    data: "harga_beli",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                },{
-                    data: "harga_jual",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                },{
-                    data: "kategori.kategori_nama",
-                    className: "",
-                    orderable: false,
-                    searchable: false
-                }, {
-                    data: "aksi",
-                    className: "",
-                    orderable: false,
-                    searchable: false
-                }]
+                        data: "DT_RowIndex",
+                        className: "text-center",
+                        orderable: false,
+                        searchable: false
+                    }, {
+                        data: "barang_kode",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    }, {
+                        data: "barang_nama",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    }, {
+                        data: "harga_beli",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    }, {
+                        data: "harga_jual",
+                        className: "",
+                        orderable: true,
+                        searchable: true
+                    }, {
+                        data: "kategori.kategori_nama",
+                        className: "",
+                        orderable: false,
+                        searchable: false
+                    }, {
+                        data: "gambar_barang",
+                        className: "",
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, type, row) {
+                            return '<img src="storage/' + data +
+                                '" class="img-thumbnail" width="200" />';
+                        }
+                    },
+                    {
+                        data: "aksi",
+                        className: "",
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
             });
             $('#kategori_id').on('change', function() {
                 dataUser.ajax.reload();

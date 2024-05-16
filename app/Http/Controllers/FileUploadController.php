@@ -15,20 +15,26 @@ class FileUploadController extends Controller
         // dump($request->berkas);
 
         $request->validate([
-            'berkas' => 'required|file|image|max:5000'
+            'berkas' => 'required|file|image|max:5000',
         ]);
 
+        if($request->has('namaFile')) {
+            $namaFile = $request->namaFile . "." . $request->berkas->getClientOriginalExtension();
+            $path = $request->berkas->storeAs('public', $namaFile);
+        } else {
+            $namaFile = "web-" . time() . "." . $request->berkas->getClientOriginalExtension();
+            $path = $request->berkas->storeAs('public', $namaFile);
+        }
+
         // $namaFile = $request->berkas->getClientOriginalName();
-        $namaFile = "web-" . time() . "." . $request->berkas->getClientOriginalExtension();
-        $path = $request->berkas->storeAs('public', $namaFile);
 
-        $path = $request->berkas->move('gambar', $namaFile);
-        $path = str_replace("\\", "//", $path);
-        echo "Variabel path berisi: $path <br>";
+        // $path = $request->berkas->move('gambar', $namaFile);
+        // $path = str_replace("\\", "//", $path);
+        // echo "Variabel path berisi: $path <br>";
 
-        $pathBaru = asset('gambar/' . $namaFile);
+        // $pathBaru = asset('public/' . $namaFile);
         echo "Proses file upload berhasil. File tersimpan di: $path";
         echo "<br>";
-        echo "Tampilkan link : <a href='$pathBaru'> $pathBaru </a>";
+        echo "Gambar :<br> <img src='storage/$namaFile' alt='Foto User' width='100'>";
     }
 }

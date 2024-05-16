@@ -26,7 +26,8 @@ class StoreBarangRequest extends FormRequest
             'barang_nama' => ['required', 'string', 'max:255'],
             'harga_beli' => ['required', 'numeric'],
             'harga_jual' => ['required', 'numeric'],
-            'kategori_id' => ['required', 'numeric']
+            'kategori_id' => ['required', 'numeric'],
+            'gambar_barang' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:5000'],
         ];
     }
 }
