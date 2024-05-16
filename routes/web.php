@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\POSController;
@@ -173,6 +174,11 @@ Route::group(['middleware' => ['auth']], function() {
         Route::resource('manager', ManagerController::class);
     });
 });
+
+Route::get('/file-upload', [FileUploadController::class, 'fileUpload']);
+Route::post('/file-upload', [FileUploadController::class, 'prosesFileUpload']);
+
+
 // // Routing Product Page
 // Route::prefix('category')->group(function (){
 //     Route::get('/', [ProductsController::class, 'index']);
